@@ -1,14 +1,18 @@
+#!/usr/bin/env ruby
 
 def caesar_cipher(text, shift)
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = "abcdefghijklmnopqrstuvwxyz".split('')
+    alphabet_len = alphabet.length - 1
+
     text.downcase!
     res = ""
 
-    alphabet_len = alphabet.length - 1
     for i in 0..text.length - 1
         if text[i] == ' ' || text[i] == '!'
             res += text[i]
+            next
         end
+        
         for j in 0..alphabet_len
             if text[i] == alphabet[j]
                 res += alphabet[( shift - (alphabet_len - j) ) - 1]
